@@ -1,0 +1,8 @@
+{
+  "name": "collection-helpers",
+  "description": "Meteor collection helpers",
+  "homepage": "https://github.com/dburles/collection-helpers",
+  "author": "David Burles (http://twitter.com/dburles)",
+  "version": "0.1.0",
+  "git": "https://github.com/dburles/collection-helpers.git"
+}
