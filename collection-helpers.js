@@ -2,14 +2,12 @@ var constructor = Meteor.Collection;
 var Document = {};
 
 Meteor.Collection = function(name, options) {
-  var self = this;
   if (typeof options === 'undefined')
     options = {};
 
-  self._name = name;
-  Document[self._name] = function(doc) { return _.extend(this, doc); };
-  
-  options.transform = function(doc) { return new Document[self._name](doc); };
+  Document[name] = function(doc) { return _.extend(this, doc); };
+  options.transform = function(doc) { return new Document[name](doc); };
+
   return constructor.call(this, name, options);
 };
 
