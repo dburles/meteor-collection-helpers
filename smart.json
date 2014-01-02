@@ -3,6 +3,6 @@
   "description": "Add helpers to your collections, just like templates.",
   "homepage": "https://github.com/dburles/meteor-collection-helpers",
   "author": "David Burles (http://twitter.com/dburles)",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "git": "https://github.com/dburles/meteor-collection-helpers.git"
 }

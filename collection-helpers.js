@@ -24,3 +24,11 @@ for (var func in constructor) {
     Meteor.Collection[func] = constructor[func];
   }
 }
+
+var User = function(doc) { return _.extend(this, doc); };
+Meteor.users._transform = function(doc) { return new User(doc); };
+Meteor.users.helpers = function(helpers) {
+  _.each(helpers, function(helper, key) {
+    User.prototype[key] = helper;
+  });
+};
