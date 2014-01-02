@@ -1,6 +1,6 @@
 # Meteor Collection Helpers
 
-Add helpers to your collections, just like templates!
+Add helpers to your collections, just like templates.
 
 ### Usage
 
@@ -26,6 +26,13 @@ Authors.helpers({
 });
 ```
 
+You can also apply helpers to users
+
+```javascript
+Meteor.users.helpers({
+  ...
+});
+```
 ### Credits
 
 Thanks to Mathieu Bouchard's work on [collection-hooks](https://github.com/matb33/meteor-collection-hooks) which assisted a great deal with extending Meteor.Collection.
