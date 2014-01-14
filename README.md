@@ -1,10 +1,10 @@
 # Meteor Collection Helpers
 
-Add helpers to your collections, just like templates.
+Collection helpers automatically sets up a transformation on your collections allowing for simple models, with an interface similar to template helpers.
 
 ### Usage
 
-A basic example
+Set up some helpers
 
 ```javascript
 Books = new Meteor.Collection('books');
@@ -26,7 +26,9 @@ Authors.helpers({
 });
 ```
 
-Relationships are then resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
+#### Within a template
+
+Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
 
 ```javascript
 Template.books.helpers({
@@ -36,7 +38,7 @@ Template.books.helpers({
 });
 ```
 
-..with the corresponding template:
+...with the corresponding template:
 
 ```html
 <template name="books">
@@ -48,11 +50,22 @@ Template.books.helpers({
 </template>
 ```
 
-You can also apply helpers to users
+#### Outside of templates
+
+You can of course have access to the methods and properies outside of your templates:
+
+```javascript
+Books.findOne().author().firstName; // Charles
+Books.findOne().author().fullName(); // Charles Darwin
+```
+
+### Meteor.users
+
+You can also apply helpers to the Meteor.users collection
 
 ```javascript
 Meteor.users.helpers({
-  ...
+  // ...
 });
 ```
 
