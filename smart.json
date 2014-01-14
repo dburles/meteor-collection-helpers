@@ -2,7 +2,7 @@
   "name": "collection-helpers",
   "description": "Add helpers to your collections.",
   "homepage": "https://github.com/dburles/meteor-collection-helpers",
-  "author": "David Burles (http://twitter.com/dburles)",
-  "version": "0.2.1",
+  "author": "David Burles (http://github.com/dburles)",
+  "version": "0.2.2",
   "git": "https://github.com/dburles/meteor-collection-helpers.git"
 }
