@@ -26,7 +26,7 @@ Authors.helpers({
 });
 ```
 
-#### Within a template
+#### Example use within a template
 
 Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
 
@@ -50,9 +50,9 @@ Template.books.helpers({
 </template>
 ```
 
-#### Outside of templates
+#### Use outside of templates
 
-You can of course have access to the methods and properies outside of your templates:
+You can of course access helpers outside of your templates:
 
 ```javascript
 Books.findOne().author().firstName; // Charles
@@ -71,4 +71,6 @@ Meteor.users.helpers({
 
 ### Credits
 
-Thanks to Mathieu Bouchard's work on [collection-hooks](https://github.com/matb33/meteor-collection-hooks) which assisted a great deal with extending Meteor.Collection.
+Thanks to [Tom Coleman](https://github.com/tmeasday/) for the idea on the refactor and [Mathieu Bouchard's](https://github.com/matb33/) method to extend Meteor.Collection (used in collection-helpers pre 0.2.0)
+
+
