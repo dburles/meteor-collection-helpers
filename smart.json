@@ -1,8 +1,8 @@
 {
   "name": "collection-helpers",
-  "description": "Add helpers to your collections, just like templates.",
+  "description": "Add helpers to your collections.",
   "homepage": "https://github.com/dburles/meteor-collection-helpers",
   "author": "David Burles (http://twitter.com/dburles)",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "git": "https://github.com/dburles/meteor-collection-helpers.git"
 }
