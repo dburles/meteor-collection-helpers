@@ -4,7 +4,9 @@ Collection helpers automatically sets up a transformation on your collections al
 
 ### Usage
 
-Set up some helpers
+It's recommended to set up helpers on both the server and client, that's generally anywhere outside of the client and server directories. This way your helpers can be accessed both server side and client side.
+
+Some simple helpers:
 
 ```javascript
 Books = new Meteor.Collection('books');
