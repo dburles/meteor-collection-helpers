@@ -2,7 +2,7 @@
 
 Collection helpers automatically sets up a transformation on your collections allowing for simple models, with an interface similar to template helpers.
 
-### Usage
+## Usage
 
 It's recommended to set up helpers on both the server and client, that's generally anywhere outside of the client and server directories. This way your helpers can be accessed both server side and client side.
 
@@ -28,7 +28,7 @@ Authors.helpers({
 });
 ```
 
-#### Example use within a template
+### Example use within a template
 
 Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
 
@@ -52,7 +52,7 @@ Template.books.helpers({
 </template>
 ```
 
-#### Use outside of templates
+### Use outside of templates
 
 You can of course access helpers outside of your templates:
 
@@ -61,7 +61,7 @@ Books.findOne().author().firstName; // Charles
 Books.findOne().author().fullName(); // Charles Darwin
 ```
 
-### Meteor.users
+## Meteor.users
 
 You can also apply helpers to the Meteor.users collection
 
