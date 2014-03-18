@@ -75,4 +75,6 @@ Meteor.users.helpers({
 
 Thanks to [Tom Coleman](https://github.com/tmeasday/) for the idea on the refactor and [Mathieu Bouchard's](https://github.com/matb33/) method to extend Meteor.Collection (used in collection-helpers pre 0.2.0)
 
+### License
 
+MIT
