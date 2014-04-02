@@ -1,5 +1,7 @@
 # Meteor Collection Helpers
 
+https://atmospherejs.com/package/collection-helpers
+
 Collection helpers automatically sets up a transformation on your collections allowing for simple models, with an interface similar to template helpers.
 
 ## Usage
