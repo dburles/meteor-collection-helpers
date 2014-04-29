@@ -4,6 +4,15 @@ https://atmospherejs.com/package/collection-helpers
 
 Collection helpers automatically sets up a transformation on your collections allowing for simple models, with an interface similar to template helpers.
 
+## Installation
+
+
+Collection helpers can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
+
+```sh
+$ mrt add collection-helpers
+```
+
 ## Usage
 
 It's recommended to set up helpers on both the server and client, that's generally anywhere outside of the client and server directories. This way your helpers can be accessed both server side and client side.
