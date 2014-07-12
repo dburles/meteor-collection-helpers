@@ -1,8 +1,8 @@
 {
   "name": "collection-helpers",
-  "description": "Define helpers directly on your Collections, avoiding repeated Template helpers.",
+  "description": "Transform your collections with helpers that you define.",
   "homepage": "https://github.com/dburles/meteor-collection-helpers",
   "author": "David Burles (http://twitter.com/dburles)",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "git": "https://github.com/dburles/meteor-collection-helpers.git"
 }
