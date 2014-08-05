@@ -3,6 +3,6 @@
   "description": "Transform your collections with helpers that you define.",
   "homepage": "https://github.com/dburles/meteor-collection-helpers",
   "author": "David Burles (http://twitter.com/dburles)",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "git": "https://github.com/dburles/meteor-collection-helpers.git"
 }
