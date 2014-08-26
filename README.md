@@ -4,10 +4,8 @@ Collection helpers automatically sets up a transformation on your collections al
 
 ## Installation
 
-Collection helpers can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
-
 ```sh
-$ mrt add collection-helpers
+$ meteor add dburles:collection-helpers
 ```
 
 ## Usage

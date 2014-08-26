@@ -1,14 +1,16 @@
 Package.describe({
-  summary: 'Collection helpers'
+  summary: "Transform your collections with helpers that you define",
+  version: "0.3.2",
+  git: "https://github.com/dburles/meteor-collection-helpers.git"
 });
 
-Package.on_use(function(api) {
+Package.onUse(function(api) {
   api.use(['underscore', 'mongo-livedata']);
-  api.add_files('collection-helpers.js');
+  api.addFiles('collection-helpers.js');
 });
 
-Package.on_test(function(api) {
+Package.onTest(function(api) {
   api.use('tinytest');
   api.use('collection-helpers');
-  api.add_files('collection-helpers_tests.js');
+  api.addFiles('collection-helpers_tests.js');
 });
