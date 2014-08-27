@@ -5,12 +5,15 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.use(['underscore', 'mongo-livedata']);
+  api.use([
+    'underscore@1.0.0',
+    'mongo-livedata@1.0.3']);
+  
   api.addFiles('collection-helpers.js');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('collection-helpers');
+  api.use('dburles:collection-helpers');
   api.addFiles('collection-helpers_tests.js');
 });
