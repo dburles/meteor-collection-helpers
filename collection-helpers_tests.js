@@ -1,4 +1,4 @@
-Tinytest.add("collection-helpers - works", function(test) {
+Tinytest.add("works", function(test) {
   Books = new Mongo.Collection('books' + test.id);
   Authors = new Mongo.Collection('authors' + test.id);
 
@@ -28,6 +28,11 @@ Tinytest.add("collection-helpers - works", function(test) {
     }
   });
 
+  // We should be able to apply more if we wish
+  Books.helpers({
+    foo: 'bar'
+  });
+
   Authors.helpers({
     fullName: function() {
       return this.firstName + ' ' + this.lastName;
@@ -40,6 +45,7 @@ Tinytest.add("collection-helpers - works", function(test) {
   var book = Books.findOne(book1);
   var author = book.author();
   test.equal(author.firstName, 'Charles');
+  test.equal(book.foo, 'bar');
 
   book = Books.findOne(book2);
   author = book.author();
@@ -48,4 +54,21 @@ Tinytest.add("collection-helpers - works", function(test) {
   author = Authors.findOne(author1);
   books = author.books();
   test.equal(books.count(), 1);
+});
+
+Tinytest.add("throw error if transform function already exists", function(test) {
+  Author = function(doc) { return _.extend(this, doc); };
+
+  Author.prototype.fullName = 'Charles Darwin';
+
+  Authors = new Meteor.Collection('authors' + test.id, {
+    transform: function(doc) { return new Author(doc); }});
+
+  test.throws(function() {
+    Authors.helpers({
+      fullName: function() {
+        return this.firstName + ' ' + this.lastName;
+      }
+    });
+  });
 });

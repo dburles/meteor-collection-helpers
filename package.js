@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Transform your collections with helpers that you define",
-  version: "0.3.2",
+  version: "1.0.0",
   git: "https://github.com/dburles/meteor-collection-helpers.git"
 });
 
