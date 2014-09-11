@@ -1,6 +1,6 @@
 Tinytest.add("collection-helpers - works", function(test) {
-  Books = new Meteor.Collection('books' + test.id);
-  Authors = new Meteor.Collection('authors' + test.id);
+  Books = new Mongo.Collection('books' + test.id);
+  Authors = new Mongo.Collection('authors' + test.id);
 
   var author1 = Authors.insert({
     firstName: 'Charles',

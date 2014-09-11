@@ -1,5 +1,5 @@
 var Document = {};
-Meteor.Collection.prototype.helpers = function(helpers) {
+Mongo.Collection.prototype.helpers = function(helpers) {
   var self = this;
   if (! Document[self._name]) Document[self._name] = function(doc) { return _.extend(this, doc); };
   if (! self._transform) self._transform = function(doc) { return new Document[self._name](doc); };
