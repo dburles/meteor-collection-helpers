@@ -1,13 +1,14 @@
 Package.describe({
+  name: "dburles:collection-helpers",
   summary: "Transform your collections with helpers that you define",
-  version: "1.0.0",
+  version: "1.0.1",
   git: "https://github.com/dburles/meteor-collection-helpers.git"
 });
 
 Package.onUse(function(api) {
   api.use([
-    'underscore@1.0.0',
-    'mongo-livedata@1.0.3']);
+    'underscore@1.0.1',
+    'mongo@1.0.7']);
   
   api.addFiles('collection-helpers.js');
 });
