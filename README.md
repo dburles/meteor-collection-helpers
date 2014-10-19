@@ -15,8 +15,8 @@ It's recommended to set up helpers to run on both server and client. This way yo
 Some simple helpers:
 
 ```javascript
-Books = new Meteor.Collection('books');
-Authors = new Meteor.Collection('authors');
+Books = new Mongo.Collection('books');
+Authors = new Mongo.Collection('authors');
 
 Books.helpers({
   author: function() {
