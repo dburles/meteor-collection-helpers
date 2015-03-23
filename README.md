@@ -77,6 +77,21 @@ Meteor.users.helpers({
 });
 ```
 
+### Applying the transformation function
+
+Sometimes it may be useful to apply the transformation directly to an object.
+
+```js
+var doc = {
+  firstName: 'Charles',
+  lastName: 'Darwin'
+};
+
+transformedDoc = Authors._transform(doc);
+
+transformedDoc.fullName(); // Charles Darwin
+```
+
 ### License
 
 MIT
