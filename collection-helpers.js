@@ -7,7 +7,9 @@ Mongo.Collection.prototype.helpers = function(helpers) {
 
   if (! self._helpers) {
       self._helpers = function Document(doc) {
-          console.log(this);
+          _.extend(this, doc);
+          self._helpers._nest(self._helpers._nestedHelperTree, this);
+          return this;
       };
       self._helpers._nest = function (tree, currentLevel) {
           for (var node in tree) {
