@@ -9,6 +9,34 @@ Mongo.Collection.prototype.helpers = function(helpers) {
       self._helpers = function Document(doc) {
           console.log(this);
       };
+      self._helpers._nest = function (tree, currentLevel) {
+          for (var node in tree) {
+              if (typeof tree[node] === "function") {
+                  // we expect tree leaves to be helper functions
+                  currentLevel[node] = tree[node];
+              } else {
+                  if (!currentLevel[node]) {
+                      console.error("Cannot navigate past node " + node + " it does not exist.");
+                      return;
+                  }
+                  if (!tree[node].$ && !currentLevel[node]) {
+                      console.error(["Property " + node + " does not exist.", tree, currentLevel]);
+                      return;
+                  }
+                  if (node.indexOf("$") !== -1) {
+                      console.error("$ must be preceded by an array");
+                      return;
+                  }
+                  if (tree[node].$) {
+                      for (var i = 0; i < currentLevel[node].length; i++) {
+                          self._helpers._nest(tree[node].$, currentLevel[node][i]);
+                      }
+                  } else {
+                      self._helpers._nest(tree[node], currentLevel[node]);
+                  }
+              }
+           }
+        };
     self._transform = function(doc) {
       return new self._helpers(doc);
     };
