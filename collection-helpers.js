@@ -18,16 +18,11 @@ Mongo.Collection.prototype.helpers = function(helpers) {
                   currentLevel[node] = tree[node];
               } else {
                   if (!currentLevel[node]) {
-                      console.error("Cannot navigate past node " + node + " it does not exist.");
-                      return;
-                  }
-                  if (!tree[node].$ && !currentLevel[node]) {
-                      console.error(["Property " + node + " does not exist.", tree, currentLevel]);
-                      return;
+                      // Property does not exist on this document. Ignore
+                      continue;
                   }
                   if (node.indexOf("$") !== -1) {
-                      console.error("$ must be preceded by an array");
-                      return;
+                      throw new Error("$ must be preceded by an array");
                   }
                   if (tree[node].$) {
                       for (var i = 0; i < currentLevel[node].length; i++) {
@@ -49,8 +44,7 @@ Mongo.Collection.prototype.helpers = function(helpers) {
       if (path.length === 1) {
           // key is root
           if (self._helpers.prototype[key]) {
-              console.error("Cannot add helper at" + key + ". Helpers cannot override existing properties");
-              return;
+              throw new Error("Cannot add helper at" + key + ". Helpers cannot override existing properties");
           }
           self._helpers.prototype[key] = helper;
           return;
@@ -61,8 +55,7 @@ Mongo.Collection.prototype.helpers = function(helpers) {
           for (var i = 0; i < path.length; i++) {
               if (i === path.length - 1) {
                   if (tree[path[i]]) {
-                      console.error("Cannot add helper at" + key + ". Helper already defined");
-                      return;
+                      throw new Error("Cannot add helper at" + key + ". Helper already defined");
                   } else {
                       tree[path[i]] = helper;
                   }
