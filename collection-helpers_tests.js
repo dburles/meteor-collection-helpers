@@ -62,6 +62,21 @@ Tinytest.add("works", function(test) {
       }
   });
 
+  Books.helpers({
+      "nested.property.on.book.getNumber": function () {
+          return this.number;
+      },
+      "chapters.$.numberOfPages": function () {
+          return this.pages.length;
+      },
+      "arrayWithComplexObjects.$.nest.helper.insideArrays.getNumber": function () {
+          return this.number;
+      },
+      "arrayWithComplexObjects.$.nest.helper.getNext": function () {
+          return this;
+      }
+  });
+
   // We should be able to apply more if we wish
   Books.helpers({
     foo: 'bar'
