@@ -1,3 +1,5 @@
+#OUTDATED
+
 # Meteor Collection Helpers
 
 Collection helpers automatically sets up a transformation on your collections using Meteor's Mongo.Collection `transform` option, allowing for simple models, with an interface similar to template helpers.
