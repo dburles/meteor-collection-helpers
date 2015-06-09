@@ -81,6 +81,8 @@ Books.helpers({
 });
 // bookInstance.chapters[2].numberOfPages(); // number of pages in chapter three
 // bookInstance.chapters[5].numberOfPages(); // number of pages in chapter six
+// p.s. You can nest after arrays as well: "some.array.$.elementField.array.$.very.deep.array.$.helperName": func ...
+
 ```
 
 ### Example use within a template
