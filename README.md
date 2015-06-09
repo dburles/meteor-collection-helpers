@@ -5,35 +5,74 @@ Collection helpers automatically sets up a transformation on your collections us
 
 ## Installation
 
+There is not currently a package with this functionality. Just clone into your packages folder and do 
 ```sh
-$ meteor add dburles:collection-helpers
+add dburles:collection-helpers.
 ```
+This package is not currently compatible with dburles:collection-helpers and is offered as an alternative. It is also quite new so stuff like the fact that it still has the same name etc. will be sorted out as time allows.
 
-## Usage
+## Usage - TODO: Better examples
 
-It's recommended to set up helpers to run on both server and client. This way your helpers can be accessed both server side and client side.
+It's recommended to set up helpers to run on both server and client. This way your helpers can be accessed both server side and client side. 
 
-Some simple helpers:
+###Pre-requisites
+_Define some collections._
 
 ```javascript
 Books = new Mongo.Collection('books');
 Authors = new Mongo.Collection('authors');
 
+// A book document looks like:
+// {
+//     name: "A book written for me",
+// 	   authorId: "xsdafdawd...",
+// 	   publisher: "Pubs united",
+// 	   foreword: {
+// 		   author: "Foreword Author"
+// 		   title: "Foreword"
+// 		   paragraphs: [ ... ] /*strings*/,		
+// 	   },
+// 	   chapters: [
+//	       { title: "...", pages: [ ... ] /*strings*/ }
+//	   ]
+// }
+```
+
+###Basic Helpers
+Attaches helpers to the root document(s) returned from a collection.
 Books.helpers({
   author: function() {
     return Authors.findOne(this.authorId);
-  }
-});
-
-Authors.helpers({
-  fullName: function() {
-    return this.firstName + ' ' + this.lastName;
   },
-  books: function() {
-    return Books.find({ authorId: this._id });
+  remove: function(){
+	Books.remove({_id: this._id});
   }
 });
-```
+// bookInstance.remove() // remove this book from the Books collection
+// bookInstance.author().firstName 
+
+###Nested Helpers
+Books.helpers({
+	"foreword.numberOfParagraphs": function(helperContext){
+		//helperContext -> { parentDocument: { ... }, rootDocument: { ... } }
+		//this -> { author: "...", title: "...", paragraphs: [...] }	
+		
+		return this.paragraphs ? this.paragraphs.length : 0;
+	}
+});
+// var n = bookInstance.foreword.numberOfParagraphs() // number of paragraphs in foreword
+
+###Array Nested Helpers
+Books.helpers({
+	"chapters.$.numberOfPages": function(helperContext){
+		//helperContext -> { parentDocument: { ... }, rootDocument: { ... } }
+		//this -> { title: "...", pages: [ ... ] }	
+		
+		return this.pages ? this.pages.length : 0;
+	}
+});
+// bookInstance.chapters[2].numberOfPages(); // number of pages in chapter three
+// bookInstance.chapters[5].numberOfPages(); // number of pages in chapter six
 
 ### Example use within a template
 
@@ -49,23 +88,22 @@ Template.books.helpers({
 
 ...with the corresponding template:
 
-```html
+```html 
+// TODO: test this to make sure it works
 <template name="books">
   <ul>
   {{#each books}}
-    <li>{{name}} by {{author.fullName}}</li>
+    <li>
+	<p>{{name}} by {{author.fullName}}</p>
+	<ul>
+		{{ #each chapters }}
+		<li>{{ title }}: {{ numberOfPages }}</li>
+		{{ /each }}
+	</ul>	
+	</li>
   {{/each}}
   </ul>
 </template>
-```
-
-### Use outside of templates
-
-You can of course access helpers outside of your templates:
-
-```javascript
-Books.findOne().author().firstName; // Charles
-Books.findOne().author().fullName(); // Charles Darwin
 ```
 
 ## Meteor.users
