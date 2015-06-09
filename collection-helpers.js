@@ -8,14 +8,19 @@ Mongo.Collection.prototype.helpers = function(helpers) {
   if (! self._helpers) {
       self._helpers = function Document(doc) {
           _.extend(this, doc);
-          self._helpers._nest(self._helpers._nestedHelperTree, this);
+          self._helpers._nest(this, self._helpers._nestedHelperTree, this);
           return this;
       };
-      self._helpers._nest = function (tree, currentLevel) {
+      self._helpers._nest = function (root, tree, currentLevel, parentLevel) {
           for (var node in tree) {
               if (typeof tree[node] === "function") {
                   // we expect tree leaves to be helper functions
-                  currentLevel[node] = tree[node];
+                  currentLevel[node] = _.partial(tree[node], {
+                      nestedHelperContext: {
+                          parentDocument: parentLevel,
+                          rootDocument: root
+                      }
+                  });
               } else {
                   if (!currentLevel[node]) {
                       // Property does not exist on this document. Ignore
@@ -26,10 +31,10 @@ Mongo.Collection.prototype.helpers = function(helpers) {
                   }
                   if (tree[node].$) {
                       for (var i = 0; i < currentLevel[node].length; i++) {
-                          self._helpers._nest(tree[node].$, currentLevel[node][i]);
+                          self._helpers._nest(root, tree[node].$, currentLevel[node][i], currentLevel);
                       }
                   } else {
-                      self._helpers._nest(tree[node], currentLevel[node]);
+                      self._helpers._nest(root, tree[node], currentLevel[node], currentLevel);
                   }
               }
            }
