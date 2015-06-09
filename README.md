@@ -1,7 +1,7 @@
 
 TODO:
-
-    - Tests need to be updated
+- Tests need to be updated
+- 
 
 # Meteor Collection Helpers
 
@@ -43,7 +43,7 @@ Authors = new Mongo.Collection('authors');
 ```
 
 ###Basic Helpers
-Attaches helpers to the root document(s) returned from a collection.
+_Attaches helpers to the root document(s) returned from a collection._
 
 ```javascript
 Books.helpers({
@@ -59,6 +59,7 @@ Books.helpers({
 ```
 
 ###Nested Helpers
+_Attaches helpers to the embeded document(s) returned from a collection._
 
 ```javascript
 Books.helpers({
@@ -73,6 +74,7 @@ Books.helpers({
 ```
 
 ###Array Nested Helpers
+_Attaches helpers to the embeded document(s) inside arrays, returned from a collection._
 
 ```javascript
 Books.helpers({
