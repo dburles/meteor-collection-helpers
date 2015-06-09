@@ -7,7 +7,7 @@ Collection helpers automatically sets up a transformation on your collections us
 
 There is not currently a package with this functionality. Just clone into your packages folder and do 
 ```sh
-add dburles:collection-helpers.
+$ meteor add dburles:collection-helpers
 ```
 This package is not currently compatible with dburles:collection-helpers and is offered as an alternative. It is also quite new so stuff like the fact that it still has the same name etc. will be sorted out as time allows.
 
@@ -40,6 +40,7 @@ Authors = new Mongo.Collection('authors');
 
 ###Basic Helpers
 Attaches helpers to the root document(s) returned from a collection.
+```javascript
 Books.helpers({
   author: function() {
     return Authors.findOne(this.authorId);
@@ -50,8 +51,10 @@ Books.helpers({
 });
 // bookInstance.remove() // remove this book from the Books collection
 // bookInstance.author().firstName 
+```
 
 ###Nested Helpers
+```javascript
 Books.helpers({
 	"foreword.numberOfParagraphs": function(helperContext){
 		//helperContext -> { parentDocument: { ... }, rootDocument: { ... } }
@@ -61,8 +64,10 @@ Books.helpers({
 	}
 });
 // var n = bookInstance.foreword.numberOfParagraphs() // number of paragraphs in foreword
+```
 
 ###Array Nested Helpers
+```javascript
 Books.helpers({
 	"chapters.$.numberOfPages": function(helperContext){
 		//helperContext -> { parentDocument: { ... }, rootDocument: { ... } }
@@ -73,6 +78,7 @@ Books.helpers({
 });
 // bookInstance.chapters[2].numberOfPages(); // number of pages in chapter three
 // bookInstance.chapters[5].numberOfPages(); // number of pages in chapter six
+```
 
 ### Example use within a template
 
