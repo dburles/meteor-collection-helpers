@@ -40,6 +40,7 @@ Authors = new Mongo.Collection('authors');
 
 ###Basic Helpers
 Attaches helpers to the root document(s) returned from a collection.
+
 ```javascript
 Books.helpers({
   author: function() {
@@ -54,6 +55,7 @@ Books.helpers({
 ```
 
 ###Nested Helpers
+
 ```javascript
 Books.helpers({
 	"foreword.numberOfParagraphs": function(helperContext){
@@ -67,6 +69,7 @@ Books.helpers({
 ```
 
 ###Array Nested Helpers
+
 ```javascript
 Books.helpers({
 	"chapters.$.numberOfPages": function(helperContext){
