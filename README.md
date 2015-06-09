@@ -1,7 +1,6 @@
-
 TODO:
 - Tests need to be updated
-- 
+   
 
 # Meteor Collection Helpers
 
