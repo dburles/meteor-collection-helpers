@@ -14,7 +14,7 @@ Collection helpers automatically sets up a transformation on your collections us
 
 There is not currently a package with this functionality. Just clone into your packages folder and do 
 ```sh
-$ meteor add dburles:collection-helpers
+$ meteor add stfnbrgh:nested-collection-helpers
 ```
 This package is not currently compatible with dburles:collection-helpers and is offered as an alternative. It is also quite new so stuff like the fact that it still has the same name etc. will be sorted out as time allows.
 
