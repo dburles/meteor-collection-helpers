@@ -1,3 +1,7 @@
+_Based on dburles:collection-helpers but adds support for nesting helpers on embedded documents. 
+If you do not require nesting see https://atmospherejs.com/dburles/collection-helpers and https://github.com/dburles/meteor-collection-helpers. This package might become an add-on for collection-helpers in the future._
+
+
 TODO:
 - Tests need to be updated
    
