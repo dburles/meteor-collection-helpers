@@ -1,5 +1,5 @@
 Package.describe({
-  name: "stfnbrgh:collection-nested-helpers",
+  name: "stfnbrgh:nested-collection-helpers",
   summary: "Transform your collections with helpers that you define",
   version: "0.0.1",
   git: "https://github.com/stfnbrgh/meteor-nested-collection-helpers.git"
