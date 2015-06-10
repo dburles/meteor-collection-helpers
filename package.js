@@ -1,8 +1,8 @@
 Package.describe({
-  name: "dburles:collection-helpers",
+  name: "stfnbrgh:collection-nested-helpers",
   summary: "Transform your collections with helpers that you define",
-  version: "1.0.3",
-  git: "https://github.com/dburles/meteor-collection-helpers.git"
+  version: "0.0.1",
+  git: "https://github.com/stfnbrgh/meteor-nested-collection-helpers.git"
 });
 
 Package.onUse(function(api) {
