@@ -1,7 +1,7 @@
 Package.describe({
   name: "stfnbrgh:nested-collection-helpers",
   summary: "Transform your collections with helpers that you define",
-  version: "0.0.1",
+  version: "0.0.2",
   git: "https://github.com/stfnbrgh/meteor-nested-collection-helpers.git"
 });
 
