@@ -1,6 +1,6 @@
 # Meteor Collection Helpers
 
-Collection helpers automatically sets up a transformation on your collections using Meteor's Mongo.Collection `transform` option, allowing for simple models, with an interface similar to template helpers.
+Collection helpers automatically sets up a transformation on your collections using Meteor's Mongo.Collection `transform` option, allowing for simple models with an interface that's similar to template helpers.
 
 ## Installation
 
@@ -10,9 +10,7 @@ $ meteor add dburles:collection-helpers
 
 ## Usage
 
-It's recommended to set up helpers to run on both server and client. This way your helpers can be accessed both server side and client side.
-
-Some simple helpers:
+Write your helpers somewhere seen by both client and server.
 
 ```javascript
 Books = new Mongo.Collection('books');
@@ -34,7 +32,13 @@ Authors.helpers({
 });
 ```
 
-### Example use within a template
+This will then allow you to do:
+
+```javascript
+Books.findOne().author().firstName; // Charles
+Books.findOne().author().fullName(); // Charles Darwin
+Authors.findOne().books()
+```
 
 Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
 
@@ -51,20 +55,11 @@ Template.books.helpers({
 ```html
 <template name="books">
   <ul>
-  {{#each books}}
-    <li>{{name}} by {{author.fullName}}</li>
-  {{/each}}
+    {{#each books}}
+      <li>{{name}} by {{author.fullName}}</li>
+    {{/each}}
   </ul>
 </template>
-```
-
-### Use outside of templates
-
-You can of course access helpers outside of your templates:
-
-```javascript
-Books.findOne().author().firstName; // Charles
-Books.findOne().author().fullName(); // Charles Darwin
 ```
 
 ## Meteor.users
