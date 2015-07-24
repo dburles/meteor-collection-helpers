@@ -82,7 +82,7 @@ var doc = {
   lastName: 'Darwin'
 };
 
-transformedDoc = Authors._transform(doc);
+var transformedDoc = Authors._transform(doc);
 
 transformedDoc.fullName(); // Charles Darwin
 ```
