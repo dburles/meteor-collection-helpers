@@ -19,6 +19,7 @@ Authors = new Mongo.Collection('authors');
 Books.helpers({
   author: function() {
     return Authors.findOne(this.authorId);
+    //'this' corresponds to the document returned by findOne in helper invocation (see below)
   }
 });
 
@@ -38,7 +39,10 @@ This will then allow you to do:
 Books.findOne().author().firstName; // Charles
 Books.findOne().author().fullName(); // Charles Darwin
 Authors.findOne().books()
+// Don't forget that you can find books of any author:
+Authors.findOne({lastName:'Tolstoy'}).books()
 ```
+*Note that you can only call collection helpers on a single document returned by `findOne()`, not a cursor returned by `find()`*
 
 Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
 
