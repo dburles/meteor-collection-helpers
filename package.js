@@ -10,12 +10,15 @@ Package.onUse(function(api) {
   api.use([
     'underscore',
     'mongo']);
-  
+
   api.addFiles('collection-helpers.js');
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('dburles:collection-helpers');
+  api.use([
+    'tinytest',
+    'underscore',
+    'mongo',
+    'dburles:collection-helpers']);
   api.addFiles('collection-helpers_tests.js');
 });
