@@ -2,7 +2,8 @@ Package.describe({
   name: "dburles:collection-helpers",
   summary: "Transform your collections with helpers that you define",
   version: "1.0.3",
-  git: "https://github.com/dburles/meteor-collection-helpers.git"
+  documentation: "README.md",
+  git: "https://github.com/dburles/meteor-collection-helpers.git",
 });
 
 Package.onUse(function(api) {
