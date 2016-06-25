@@ -17,16 +17,16 @@ Books = new Mongo.Collection('books');
 Authors = new Mongo.Collection('authors');
 
 Books.helpers({
-  author() {
+  author: function() {
     return Authors.findOne(this.authorId);
   }
 });
 
 Authors.helpers({
-  fullName() {
+  fullName: function() {
     return this.firstName + ' ' + this.lastName;
   },
-  books() {
+  books: function() {
     return Books.find({ authorId: this._id });
   }
 });
@@ -44,7 +44,7 @@ Our relationships are resolved by the collection helper, avoiding unnecessary te
 
 ```javascript
 Template.books.helpers({
-  books() {
+  books: function() {
     return Books.find();
   }
 });
