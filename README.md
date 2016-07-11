@@ -5,7 +5,7 @@ Collection helpers automatically sets up a transformation on your collections us
 ## Installation
 
 ```sh
-$ meteor add dburles:collection-helpers
+$ meteor add ephemer:collection-helpers
 ```
 
 ## Usage
