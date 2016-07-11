@@ -24,7 +24,7 @@ Books.helpers({
 
 Authors.helpers({
   fullName() {
-    return this.firstName + ' ' + this.lastName;
+    return `${this.firstName} ${this.lastName}`;
   },
   books() {
     return Books.find({ authorId: this._id });
