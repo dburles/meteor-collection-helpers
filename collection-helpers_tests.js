@@ -55,20 +55,3 @@ Tinytest.add("works", function(test) {
   books = author.books();
   test.equal(books.count(), 1);
 });
-
-Tinytest.add("throw error if transform function already exists", function(test) {
-  Author = function(doc) { return _.extend(this, doc); };
-
-  Author.prototype.fullName = 'Charles Darwin';
-
-  Authors = new Meteor.Collection('authors' + test.id, {
-    transform: function(doc) { return new Author(doc); }});
-
-  test.throws(function() {
-    Authors.helpers({
-      fullName: function() {
-        return this.firstName + ' ' + this.lastName;
-      }
-    });
-  });
-});
