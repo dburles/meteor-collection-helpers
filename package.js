@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom(['1.12.1', '2.3', '3.0']);
+  api.versionsFrom(['1.4.2', '2.3', '3.0']);
   api.use([
     'underscore',
     'mongo']);
