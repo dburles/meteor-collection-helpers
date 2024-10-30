@@ -27,8 +27,11 @@ if (meteorVersion && meteorVersion >= 3.0) {
 
     Books.helpers({
       author: function () {
-        // TODO: Support async helpers?
-        //return Authors.findOne(this.authorId);
+        return Authors.findOne(this.authorId);
+      },
+
+      authorAsync: async function() {
+        return await Authors.findOneAsync(this.authorId)
       }
     });
 
@@ -53,6 +56,9 @@ if (meteorVersion && meteorVersion >= 3.0) {
 
     book = await Books.findOneAsync(book2);
     author = book.author();
+    test.equal(author.fullName(), 'Carl Sagan');
+
+    author = await book.authorAsync();
     test.equal(author.fullName(), 'Carl Sagan');
 
     author = await Authors.findOneAsync(author1);
