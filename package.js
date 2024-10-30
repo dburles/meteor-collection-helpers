@@ -22,5 +22,5 @@ Package.onTest(function(api) {
     'mongo',
     'dburles:collection-helpers']);
 
-  api.addFiles('collection-helpers_tests.js');
+  api.addFiles('collection-helpers_tests.js', ['client', 'server']);
 });
