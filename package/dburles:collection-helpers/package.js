@@ -12,15 +12,14 @@ Package.onUse(function(api) {
     'underscore',
     'mongo']);
 
-  api.addFiles('collection-helpers.js');
+  api.addFiles('main.js');
 });
 
 Package.onTest(function(api) {
+  api.versionsFrom(['1.12.1', '2.3', '3.0']);
   api.use([
-    'tinytest',
+    'meteortesting:mocha@2.1.0 || 3.2.0',
     'underscore',
     'mongo',
     'dburles:collection-helpers']);
-
-  api.addFiles('collection-helpers_tests.js', ['client', 'server']);
 });
