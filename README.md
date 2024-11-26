@@ -5,7 +5,7 @@ Collection helpers automatically sets up a transformation on your collections us
 ## Installation
 
 ```sh
-$ meteor add dburles:collection-helpers
+meteor add dburles:collection-helpers
 ```
 
 ## Usage
@@ -13,15 +13,15 @@ $ meteor add dburles:collection-helpers
 Write your helpers somewhere seen by both client and server.
 
 ```javascript
-Books = new Mongo.Collection('books');
-Authors = new Mongo.Collection('authors');
+const Books = new Mongo.Collection('books');
+const Authors = new Mongo.Collection('authors');
 
 Books.helpers({
   author() {
-    return Authors.findOne(this.authorId);	// client-only
+    return Authors.findOne(this.authorId); // Client only (Meteor 3+)
   },
-  async authorAsync() {	// Async helpers supported
-    return await Authors.findOneAsync(this.authorId);
+  authorAsync() {
+    return Authors.findOneAsync(this.authorId);
   }
 });
 
@@ -30,7 +30,7 @@ Authors.helpers({
     return `${this.firstName} ${this.lastName}`;
   },
   books() {
-    return Books.find({ authorId: this._id });	// returns a cursor
+    return Books.find({ authorId: this._id });
   }
 });
 ```
@@ -73,7 +73,7 @@ Template.books.helpers({
 </template>
 ```
 
-## Meteor.users
+### Meteor.users
 
 You can also apply helpers to the Meteor.users collection
 
@@ -88,24 +88,21 @@ Meteor.users.helpers({
 Sometimes it may be useful to apply the transformation directly to an object.
 
 ```js
-var doc = {
+const doc = {
   firstName: 'Charles',
   lastName: 'Darwin'
 };
 
-var transformedDoc = Authors._transform(doc);
+const transformedDoc = Authors._transform(doc);
 
 transformedDoc.fullName(); // Charles Darwin
 ```
 
 ### Testing
 
-Clone the repo, then, from the repo root directory, run:
-
-```bash
-cd tests
-npm i && npm run test:watch
-````
+```sh
+meteor test-packages ./
+```
 
 ### License
 
