@@ -18,7 +18,10 @@ Authors = new Mongo.Collection('authors');
 
 Books.helpers({
   author() {
-    return Authors.findOne(this.authorId);
+    return Authors.findOne(this.authorId);	// client-only
+  },
+  async authorAsync() {	// Async helpers supported
+    return await Authors.findOneAsync(this.authorId);
   }
 });
 
@@ -27,7 +30,7 @@ Authors.helpers({
     return `${this.firstName} ${this.lastName}`;
   },
   books() {
-    return Books.find({ authorId: this._id });
+    return Books.find({ authorId: this._id });	// returns a cursor
   }
 });
 ```
@@ -35,9 +38,17 @@ Authors.helpers({
 This will then allow you to do:
 
 ```javascript
-Books.findOne().author().firstName; // Charles
-Books.findOne().author().fullName(); // Charles Darwin
-Authors.findOne().books()
+const book = await Books.findOneAsync();
+const author = await book.authorAsync();
+author.firstName; // Charles
+author.fullName(); // Charles Darwin
+```
+
+and:
+
+```javascript
+const author = await Authors.findOneAsync();
+await author.books().fetchAsync();
 ```
 
 Our relationships are resolved by the collection helper, avoiding unnecessary template helpers. So we can simply write:
@@ -86,6 +97,15 @@ var transformedDoc = Authors._transform(doc);
 
 transformedDoc.fullName(); // Charles Darwin
 ```
+
+### Testing
+
+Clone the repo, then, from the repo root directory, run:
+
+```bash
+cd tests
+npm i && npm run test:watch
+````
 
 ### License
 
