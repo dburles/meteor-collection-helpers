@@ -98,7 +98,7 @@ var transformedDoc = Authors._transform(doc);
 transformedDoc.fullName(); // Charles Darwin
 ```
 
-### Testing
+## Testing
 
 Clone the repo, then, from the repo root directory, run:
 
@@ -107,6 +107,6 @@ cd tests
 npm i && npm run test:watch
 ````
 
-### License
+## License
 
 MIT
