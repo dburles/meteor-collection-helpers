@@ -73,7 +73,7 @@ Template.books.helpers({
 </template>
 ```
 
-## Meteor.users
+### Meteor.users
 
 You can also apply helpers to the Meteor.users collection
 
