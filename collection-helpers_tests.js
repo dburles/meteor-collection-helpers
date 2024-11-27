@@ -3,7 +3,7 @@ const meteorVersion = Meteor.release
   : null;
 
 if (meteorVersion && meteorVersion >= 3) {
-  Tinytest.addAsync("works", async function (test, onComplete) {
+  Tinytest.addAsync("works", async function (test) {
     const Books = new Mongo.Collection(
       Meteor.isClient ? null : "books" + test.id
     );
@@ -62,8 +62,6 @@ if (meteorVersion && meteorVersion >= 3) {
     const booksByCarl = await authorCarl.books().fetchAsync();
 
     test.equal(booksByCarl.length, 1);
-
-    onComplete();
   });
 } else {
   // Meteor < 3.0
