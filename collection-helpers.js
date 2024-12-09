@@ -1,18 +1,12 @@
 Mongo.Collection.prototype.helpers = function(helpers) {
-  var self = this;
-
-  if (self._transform && ! self._helpers)
+  if (this._transform && !this._helpers)
     throw new Meteor.Error("Can't apply helpers to '" +
-      self._name + "' a transform function already exists!");
+      this._name + "' a transform function already exists!");
 
-  if (! self._helpers) {
-    self._helpers = function Document(doc) { return _.extend(this, doc); };
-    self._transform = function(doc) {
-      return new self._helpers(doc);
-    };
+  if (!this._helpers) {
+    this._helpers = function Document(doc) { return Object.assign(this, doc); };
+    this._transform = doc => new this._helpers(doc);
   }
 
-  _.each(helpers, function(helper, key) {
-    self._helpers.prototype[key] = helper;
-  });
+  Object.keys(helpers).forEach(key => (this._helpers.prototype[key] = helpers[key]));
 };
